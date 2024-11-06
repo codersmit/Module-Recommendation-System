@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Score</title>
+    <style>
+        .feedback-button {
+            position: fixed;
+            top: 100px;
+            right: 10px;
+        }
+        .logout-button {
+            position: fixed;
+            top: 125px; /* Adjusted to position below the feedback button */
+            right: 10px;
+        }
+        .back-button {
+            position: fixed;
+            top: 75px; /* Adjust as needed */
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+<a href="{% url 'preferences' %}" class="back-button"><button>Back to Preferences</button></a> <!-- Added button -->
+<form action="{% url 'submit_feedback' %}" method="post" class="feedback-button">
+    {% csrf_token %}
+    <button type="submit">Submit Feedback</button>
+</form>
+<a href="{% url 'logout_success' %}" class="logout-button"><button>Logout</button></a>
+{% for score_name, score_value in sorted_scores.items %}
+    <h1>{{ score_name }}</h1>
+    <p>Score value: {{ score_value }}</p>
+    {% for module_name, module_description in module_descriptions.items %}
+        {% if module_name == score_name %}
+            <p>Module description: {{ module_description }}</p>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</body>
+</html>

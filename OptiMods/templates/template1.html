@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Django-React App</title>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Include the React.js static files -->
+<script src="{% static 'js/main.179d4dc8.js' %}"></script>
+<!-- Add more scripts if needed -->
+
+<!-- Include the root React component -->
+<script>
+
+     const YourRootComponent = () => {
+         return (
+             <div>
+                 <h1>Hello, World!</h1>
+             </div>
+         );
+     };
+
+    ReactDOM.render(
+        React.createElement(YourRootComponent),
+        document.getElementById('root')
+    );
+</script>
+</body>
+</html>

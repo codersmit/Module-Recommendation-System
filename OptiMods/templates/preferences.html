@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .fixed-button {
+            position: fixed;
+            right: 10px;
+        }
+        .logout-button {
+            top: 70px;
+        }
+        .save-button {
+            top: 10px; /* Adjust as necessary */
+        }
+        .score-button {
+            top: 40px; /* Adjust as necessary */
+        }
+    </style>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+
+    {{ preference_form.as_p }}
+
+    {{ career_form.as_p }}
+    <button type="submit" class="fixed-button save-button">Save</button>
+</form>
+<a href="{% url 'calculate_score' %}" class="fixed-button score-button"><button>Calculate Score</button></a>
+<a href="{% url 'logout_success' %}" class="fixed-button logout-button"><button>Logout</button></a>
+{% if saved %}
+    <script>
+        alert("Saved!");
+    </script>
+{% endif %}
+</body>
+</html>

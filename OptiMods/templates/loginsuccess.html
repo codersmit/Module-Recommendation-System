@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful</title>
+    <!-- Add your CSS styles or link to external stylesheets here -->
+</head>
+<body>
+<h2>Login Successful</h2>
+<p>Congratulations! You have successfully logged in.</p>
+<form action="{% url 'logout_success' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+<!-- You can add more content or links here based on your requirements -->
+</body>
+</html>
